@@ -13,8 +13,11 @@ SELECT * FROM animals WHERE weight_kg >= 10.4 and weight_kg <= 17.3;
 UPDATE animals
 SET species = 'unspecified';
 
+SELECT * FROM animals;
 -- Rollback database
 Rollback;
+
+SELECT * FROM animals;
 
 -- inside a transaction
 BEGIN;
@@ -33,6 +36,8 @@ WHERE species != 'digimon';
 
 -- Commit the transaction.
 
+SELECT * FROM animals;
+
 COMMIT;
 
 -- Verify that change was made and persists after commit.
@@ -47,9 +52,13 @@ BEGIN;
 
 DELETE FROM animals;
 
+SELECT * FROM animals;
+
 -- Rollback transaction
 
 ROLLBACK;
+
+SELECT * FROM animals;
 
 -- Inside a transaction
 
@@ -78,6 +87,8 @@ ROLLBACK TO first_delete;
 UPDATE animals
 SET weight_kg = weight_kg * -1;
 WHERE weight_kg < 0;
+
+SELECT * FROM animals;
 
 -- Commit transaction
 
